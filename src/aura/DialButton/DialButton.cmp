@@ -1,0 +1,15 @@
+<aura:component >
+    <aura:attribute name="phoneNumber" 
+                    type="String" 
+                    access="GLOBAL"
+                    required="true"/>
+    
+    <a href="{! 'tel:' + v.phoneNumber }">
+        <img src="{!$Resource.DialPhoneAnimation}" 
+             class="roundbutton" />
+    </a>
+    <div class="slds-text-align—center">
+        {!v.phoneNumber}
+    </div>
+    
+</aura:component>

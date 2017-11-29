@@ -1,0 +1,24 @@
+<apex:page >
+    <script src="/lightning/lightning.out.js"></script>
+    <div id="badgesDiv" style="margin:10px" />
+    <div id="panicButtonDiv" />
+            
+    <script>
+      $Lightning.use("c:PanicButtonAppVF", function() {
+          $Lightning.createComponent(
+              "c:PanicButton",
+              {},
+              "panicButtonDiv"
+          );
+               
+          $Lightning.createComponent(
+              "lightning:badge",
+              {
+                  label: 'Don\'t Panic!',
+                  class: 'slds-theme--inverse'
+              },
+              "badgesDiv"
+          );
+      });
+    </script>
+</apex:page>

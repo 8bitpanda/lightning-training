@@ -1,0 +1,29 @@
+<aura:component implements="lightning:actionOverride,force:hasRecordId,force:hasSObjectName" access="global" controller="SoundClipController" >
+    
+    <aura:attribute name="soundClip" type="Object" access="private" />
+    
+    <aura:handler name="init" 
+       value="{!this}" 
+       action="{!c.doInit}" />
+    
+    <aura:if isTrue="{!v.sObjectName == 'SoundClip__c'}">
+      
+        <lightning:card title="{! 'SoundClip: ' + v.soundClip.Name}">
+            <aura:set attribute="actions">
+                <lightning:button label="Listen" onclick="{!c.onListen}"/>
+            </aura:set>
+            <p class="slds-p-horizontal--small">
+                File Url:<br />
+                {!v.soundClip.fileUrl__c}<br />
+                <br />
+                Controls:<br />
+                <audio src="{!v.soundClip.fileUrl__c}" controls="controls" aura:id="audioPlayer" />
+            </p>
+    	</lightning:card>
+
+        <aura:set attribute="else">
+            Error: this override only operates for SoundClip custom objects
+        </aura:set>
+    </aura:if>
+    
+</aura:component>

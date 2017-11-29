@@ -1,0 +1,75 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable" access="global" >
+    
+    
+    <aura:handler name="loading"
+     event="c:loading" 
+     action="{!c.spinnerShow}"/>
+
+    <aura:handler name="doneloading"
+     event="c:doneloading" 
+     action="{!c.spinnerHide}"/>
+
+    <aura:handler name="render" 
+                  value="{!this}" 
+                  action="{!c.onRender}"/>
+                  
+    <style>
+    div.pullToRefresh + div,  .viewport, .oneFlexipage, .pageBody, .flexipageComponent, .flexipagePage, .region, .regions {
+     height: 100%;
+    }
+    
+    .scroller.actionBarPlugin {
+        padding-bottom: 0px !important;
+        height: 100%;
+    }   
+  
+    .oneFlexipage .pageBody {
+      margin-top: 0px !important;
+    }
+    
+    .uiBlock.oneAnchorHeader {
+      display: none;
+    }
+    
+    .flexipageDefaultAppHomeTemplate {
+      margin: 0px !important;
+    }
+    </style>
+    
+    <div aura:id="modalspinner" 
+         class="slds-align--absolute-center slds-hide">   
+            
+      <lightning:spinner variant="brand" size="large" />
+        
+    </div>
+
+    
+    <c:modalDialog title="Welcome User!">
+        <p>Use this application to manage your teaching assignments</p>
+    </c:modalDialog>
+    
+    <div aura:id = "mainApp">
+        <lightning:tabset >
+            <lightning:tab label="News" 
+                           title="News">
+                <ui:scrollerWrapper >
+                    <forceChatter:feed type="groups"/>   
+                </ui:scrollerWrapper>
+                
+            </lightning:tab>
+            <lightning:tab label="Students" 
+                           title="Students">
+                
+                <c:AwInstructors_Students />
+                
+            </lightning:tab>
+            <lightning:tab label="Report"
+                           title="Report">
+                <c:Titlebar title="Trip Reports" /> 
+            </lightning:tab>
+            <lightning:tab label="Panic" title="Panic">
+                <c:PanicTools />
+            </lightning:tab>
+        </lightning:tabset>
+    </div>
+</aura:component>

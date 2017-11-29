@@ -1,0 +1,8 @@
+.THIS {
+    border-bottom: 1px solid silver;
+}
+
+.THIS .slds-dropdown a {
+  color: black !important;
+  text-decoration: none !important;
+}

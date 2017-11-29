@@ -1,0 +1,13 @@
+<aura:component isTemplate="true" 
+                extends="aura:template">
+    <aura:set attribute="title" value="AwInstructors"/>
+    
+    <aura:set attribute="auraPreInitBlock">
+        <auraStorage:init name="actions"
+                          persistent="true"
+                          secure="false"
+                          maxSize="1024" />
+    </aura:set>
+    
+    
+</aura:component>

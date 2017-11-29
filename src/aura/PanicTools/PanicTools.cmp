@@ -1,0 +1,33 @@
+<aura:component >
+    <aura:attribute name="selectedButtonId" 
+                    type="String" 
+                    default="btnCall" />
+    
+    <div class="toolbar">
+        <lightning:buttongroup class="slds-align--absolute-center">
+            <lightning:button label="Call" 
+                              variant="brand" 
+                              iconName="utility:call" 
+                              aura:Id="btnCall"
+                              onclick="{!c.onToolbarButtonClick}"/>
+            
+            <lightning:button label="Sound Effects"   
+                              iconName="utility:announcement" 
+                              aura:Id="btnSound"
+                              onclick="{!c.onToolbarButtonClick}"/>
+        </lightning:buttongroup>
+        
+    </div>
+    
+    <div class="cardContainer">
+        <div aura:id="dialbutton" class="card">
+            <div class="slds-text-align--center">
+                <c:DialButton phoneNumber="1-800-667-6389" />
+            </div>
+        </div>
+        <div aura:id="soundeffects" class="card card--off">
+            <c:PanicButton />
+        </div>
+        
+    </div>    
+</aura:component>
